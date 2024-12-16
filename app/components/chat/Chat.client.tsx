@@ -21,6 +21,7 @@ import { debounce } from '~/utils/debounce';
 import { useSettings } from '~/lib/hooks/useSettings';
 import type { ProviderInfo } from '~/types/model';
 import { useSearchParams } from '@remix-run/react';
+import { useKotlinJS } from '~/lib/hooks/useKotlinJS';
 
 const toastAnimation = cssTransition({
   enter: 'animated fadeInRight',
@@ -323,6 +324,8 @@ export const ChatImpl = memo(
       if (storedApiKeys) {
         setApiKeys(JSON.parse(storedApiKeys));
       }
+
+      useKotlinJS(); // Initialize Kotlin/JS environment
     }, []);
 
     const handleModelChange = (newModel: string) => {

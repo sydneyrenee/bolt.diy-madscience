@@ -18,6 +18,7 @@ import { EditorPanel } from './EditorPanel';
 import { Preview } from './Preview';
 import useViewport from '~/lib/hooks';
 import Cookies from 'js-cookie';
+import { useKotlinJS } from '~/lib/hooks/useKotlinJS';
 
 interface WorkspaceProps {
   chatStarted?: boolean;
@@ -118,6 +119,10 @@ export const Workbench = memo(({ chatStarted, isStreaming }: WorkspaceProps) => 
     } finally {
       setIsSyncing(false);
     }
+  }, []);
+
+  useEffect(() => {
+    useKotlinJS(); // Initialize Kotlin/JS environment
   }, []);
 
   return (

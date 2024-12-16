@@ -237,3 +237,104 @@ Explore upcoming features and priorities on our [Roadmap](https://roadmap.sh/r/o
 ## FAQ
 
 For answers to common questions, visit our [FAQ Page](FAQ.md).
+
+---
+
+## Kotlin/JS Migration
+
+This project is being ported to Kotlin/JS from Node.js. The following instructions will help you set up and run the Kotlin/JS project.
+
+### Prerequisites
+
+1. **Install Git**: [Download Git](https://git-scm.com/downloads)
+2. **Install Node.js**: [Download Node.js](https://nodejs.org/en/download/)
+3. **Install Kotlin**: [Download Kotlin](https://kotlinlang.org/docs/tutorials/command-line.html)
+
+### Clone the Repository
+
+Clone the repository using Git:
+
+```bash
+git clone -b stable https://github.com/stackblitz-labs/bolt.diy
+```
+
+### Configure Environment Variables
+
+1. Rename `.env.example` to `.env.local`.
+2. Add your LLM API keys. For example:
+
+```env
+GROQ_API_KEY=YOUR_GROQ_API_KEY
+OPENAI_API_KEY=YOUR_OPENAI_API_KEY
+ANTHROPIC_API_KEY=YOUR_ANTHROPIC_API_KEY
+```
+
+**Note**: Ollama does not require an API key as it runs locally.
+
+3. Optionally, set additional configurations:
+
+```env
+# Debugging
+VITE_LOG_LEVEL=debug
+
+# Ollama settings (example: 8K context, localhost port 11434)
+OLLAMA_API_BASE_URL=http://localhost:11434
+DEFAULT_NUM_CTX=8192
+```
+
+**Important**: Do not commit your `.env.local` file to version control. This file is already included in `.gitignore`.
+
+### Run the Kotlin/JS Application
+
+1. **Install Dependencies**:
+   ```bash
+   pnpm install
+   ```
+   If `pnpm` is not installed, install it using:
+   ```bash
+   sudo npm install -g pnpm
+   ```
+
+2. **Build the Kotlin/JS Project**:
+   ```bash
+   ./gradlew build
+   ```
+
+3. **Start the Kotlin/JS Application**:
+   ```bash
+   ./gradlew jsBrowserDevelopmentRun
+   ```
+
+This will start the Kotlin/JS development server.
+
+---
+
+### Update Your Local Version to the Latest
+
+To keep your local version of bolt.diy up to date with the latest changes, follow these steps for your operating system:
+
+#### 1. **Navigate to your project folder**
+   Navigate to the directory where you cloned the repository and open a terminal:
+
+#### 2. **Fetch the Latest Changes**
+   Use Git to pull the latest changes from the main repository:
+
+   ```bash
+   git pull origin main
+   ```
+
+#### 3. **Update Dependencies**
+   After pulling the latest changes, update the project dependencies by running the following command:
+
+   ```bash
+   pnpm install
+   ```
+
+#### 4. **Run the Application**
+   Once the updates are complete, you can start the application again with:
+
+   ```bash
+   ./gradlew jsBrowserDevelopmentRun
+   ```
+
+This ensures that you're running the latest version of bolt.diy and can take advantage of all the newest features and bug fixes.

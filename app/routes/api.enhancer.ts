@@ -33,11 +33,12 @@ function parseCookies(cookieHeader: string) {
 }
 
 async function enhancerAction({ context, request }: ActionFunctionArgs) {
-  const { message, model, provider } = await request.json<{
+  const { message, model, provider, kotlinJSCode } = await request.json<{
     message: string;
     model: string;
     provider: ProviderInfo;
     apiKeys?: Record<string, string>;
+    kotlinJSCode?: string;
   }>();
 
   const { name: providerName } = provider;

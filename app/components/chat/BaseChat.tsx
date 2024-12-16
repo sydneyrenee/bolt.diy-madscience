@@ -28,6 +28,7 @@ import { SpeechRecognitionButton } from '~/components/chat/SpeechRecognition';
 import type { IProviderSetting, ProviderInfo } from '~/types/model';
 import { ScreenshotStateManager } from './ScreenshotStateManager';
 import { toast } from 'react-toastify';
+import { useKotlinJS } from '~/lib/hooks/useKotlinJS';
 
 const TEXTAREA_MIN_HEIGHT = 76;
 
@@ -188,6 +189,8 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
 
         setRecognition(recognition);
       }
+
+      useKotlinJS(); // Initialize Kotlin/JS environment
     }, []);
 
     const startListening = () => {
